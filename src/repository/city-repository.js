@@ -24,7 +24,7 @@ class CityRepository{
         try {
             const city = await City.update(data,{
                 where:{
-                    id:cityid;
+                    id:cityid
                 }
             })
             return city;
