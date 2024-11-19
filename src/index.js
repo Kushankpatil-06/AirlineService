@@ -25,7 +25,7 @@ const setupAndStartServer = async()=>{
 
 
         const airports = await city.getAirports();
-        console.log(city,airports);
+        // console.log(city,airports);
     })
 }
 
