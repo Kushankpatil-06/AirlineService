@@ -15,15 +15,15 @@ class CityService {
         }
     }
 
-    async deleteCity(cityId) {
-        try {
-            const response = await this.cityRepository.deleteCity(cityId);
-            return response;
-        } catch (error) {
-            console.log("Something went wrong at service layer");
-            throw {error};
-        }
+   async deleteCity(cityId) {
+    try {
+        const response = await this.cityRepository.deleteCity(cityId);
+        return response;
+    } catch (error) {
+        console.log("Something went wrong at service layer");
+        throw {error};
     }
+}
 
     async updateCity(cityId, data) {
         try {
@@ -44,5 +44,18 @@ class CityService {
             throw {error};
         }
     }
+
+  async getAllCities(filter) {
+    try {
+        const cities = await this.cityRepository.getAllCities({name:filter.name});
+        console.log("Cities fetched in service:", cities); // Log the data returned from repository
+        return cities;
+    } catch (error) {
+        console.log("Something went wrong at service layer:", error);
+        throw { error };
+    }
+}
+
+
 }
 module.exports = CityService;

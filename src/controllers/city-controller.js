@@ -24,6 +24,7 @@ const create = async (req, res) => {
 // DELETE. -> /city/:id
 const destroy = async (req, res) => {
     try {
+        console.log("City ID for deletion:", req.params.id);
         const response = await cityService.deleteCity(req.params.id);
         return res.status(200).json({
             data: response,
@@ -70,7 +71,7 @@ const update = async (req, res) => {
         return res.status(200).json({
             data: response,
             success: true,
-            message: 'Successfully fetched a city',
+            message: 'Successfully upddate  a city',
             err: {}
         });
     } catch (error) {
@@ -87,6 +88,7 @@ const update = async (req, res) => {
 const getAll = async (req, res) => {
     try {
         const cities = await cityService.getAllCities(req.query);
+        console.log("Cities fetched in controller:", cities); // Log the data returned from service
         return res.status(200).json({
             data: cities,
             success: true,
@@ -94,7 +96,7 @@ const getAll = async (req, res) => {
             err: {}
         });
     } catch (error) {
-        console.log(error);
+        console.log("Error in controller:", error);
         return res.status(500).json({
             data: {},
             success: false,
@@ -102,7 +104,8 @@ const getAll = async (req, res) => {
             err: error
         });
     }
-}
+};
+
 
 module.exports = {
     create,
