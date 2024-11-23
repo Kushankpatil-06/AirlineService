@@ -14,7 +14,7 @@ const setupAndStartServer = async()=>{
     app.use('/api',ApiRoutes);
 
 
-    app.listen(3000,async()=>{
+    app.listen(3002,async()=>{
         console.log(`Server is running on port`);
         // db.sequelize.sync({alter:true});
         const city = await City.findOne({
